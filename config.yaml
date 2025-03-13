@@ -1,0 +1,22 @@
+# Database DSNs
+prod_dsn: ""
+dev_dsn: "username:password@tcp(localhost:3306)/db"
+
+# The list of tables we want to include in the sync
+tables:
+  events: 1000
+  companies: 1000
+
+# Which table is our "root" and how many rows to copy from it initially
+root_table: companies
+root_limit: 10
+
+# If we want to ignore foreign_key_checks to speed up bulk inserts
+disable_fk_checks: false
+
+reset_tables: true
+
+# If you want to do any anonymization, you could define rules here (placeholder)
+anonymize:
+  # table.column: "someRule"
+  # e.g. "companies.name": "fake_company"
