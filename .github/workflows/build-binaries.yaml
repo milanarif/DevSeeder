@@ -1,0 +1,26 @@
+name: Build Binaries
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        goos: [linux, darwin]
+        goarch: [amd64, arm64]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "1.20"
+      - name: Build
+        run: |
+          GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o mytool-${{ matrix.goos }}-${{ matrix.goarch }}
+      - name: Upload Binaries
+        uses: actions/upload-artifact@v3
+        with:
+          name: mytool-${{ matrix.goos }}-${{ matrix.goarch }}
+          path: mytool-${{ matrix.goos }}-${{ matrix.goarch }}

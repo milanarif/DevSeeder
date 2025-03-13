@@ -7,10 +7,8 @@ import (
 )
 
 func main() {
-	cfg, err := LoadConfig("config.yaml")
-	if err != nil {
-		log.Fatalf("Error loading config: %v\n", err)
-	}
+
+	cfg := interactiveConfig()
 
 	prodDB, devDB, err := OpenDatabases(cfg)
 	if err != nil {

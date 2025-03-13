@@ -7,14 +7,10 @@ tables:
   events: 1000
   companies: 1000
 
-# Which table is our "root" and how many rows to copy from it initially
-root_table: companies
-root_limit: 10
-
 # If we want to ignore foreign_key_checks to speed up bulk inserts
 disable_fk_checks: false
 
-reset_tables: true
+reset_tables: false
 
 # If you want to do any anonymization, you could define rules here (placeholder)
 anonymize:
